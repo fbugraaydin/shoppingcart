@@ -7,11 +7,13 @@ public class Category {
 
     private Category parentCategory;
     private String title;
+    private Stack<String> parentCategories;
 
     public Category(String title) {
         if(title==null || title.isEmpty())
             throw new IllegalArgumentException("Category title mustn't be null or empty string");
         this.title = title;
+        parentCategories = this.getParentCategories();
     }
 
     public Category(Category parentCategory, String title) {
@@ -19,6 +21,7 @@ public class Category {
         if(title==null || title.isEmpty())
             throw new IllegalArgumentException("Category title mustn't be null or empty string");
         this.title = title;
+        parentCategories = getParentCategories();
     }
 
     /**
@@ -42,7 +45,7 @@ public class Category {
      * @return
      */
     public boolean isSubCategoryOf(Category category){
-        return this.getParentCategories().stream().anyMatch(c -> c.equals(category.getTitle()));
+        return this.parentCategories.stream().anyMatch(c -> c.equals(category.getTitle()));
     }
 
     /**
@@ -52,12 +55,9 @@ public class Category {
      */
     @Override
     public String toString() {
-        Stack<String> categoryChain = getParentCategories();
-        int categorySize = categoryChain.size();
+        Stack<String> categoryChain = (Stack<String>) this.parentCategories.clone();
         StringBuilder categoryChainToDisplay = new StringBuilder();
-        for(int i = 0; i < categorySize; i++){
-            categoryChainToDisplay.append(categoryChain.pop()).append(" > ");
-        }
+        this.parentCategories.stream().forEach(c -> categoryChainToDisplay.append(categoryChain.pop()).append(" > "));
         return categoryChainToDisplay.append(this.title).toString();
     }
 
