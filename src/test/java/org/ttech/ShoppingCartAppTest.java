@@ -485,6 +485,7 @@ public class ShoppingCartAppTest {
     }
 
     // # Console Output Scenarios
+    // info : adds replacing of \r to nothing on scenarios for windows os
 
     @Test
     public void given_1ProductAndCampaign_when_appliedDiscount_then_mustBeSuccessfulConsoleOutput() {
@@ -507,7 +508,7 @@ public class ShoppingCartAppTest {
                 "Coupon Discount : 0.0 TL\n" +
                 " \n" +
                 "Total Amount: 270.0 TL\n" +
-                "Delivery Cost: 8.99 TL",outContent.toString());
+                "Delivery Cost: 8.99 TL",outContent.toString().replace("\r",""));
     }
 
     @Test
@@ -534,7 +535,7 @@ public class ShoppingCartAppTest {
                 "Coupon Discount : 0.0 TL\n" +
                 " \n" +
                 "Total Amount: 480.0 TL\n" +
-                "Delivery Cost: 12.99 TL",outContent.toString());
+                "Delivery Cost: 12.99 TL",outContent.toString().replace("\r",""));
     }
 
     /**
@@ -570,7 +571,7 @@ public class ShoppingCartAppTest {
                 "Coupon Discount : 0.0 TL\n" +
                 " \n" +
                 "Total Amount: 2880.0 TL\n" +
-                "Delivery Cost: 14.99 TL",outContent.toString());
+                "Delivery Cost: 14.99 TL",outContent.toString().replace("\r",""));
     }
 
     /**
@@ -619,7 +620,7 @@ public class ShoppingCartAppTest {
                 "Coupon Discount : 104.0 TL\n" +
                 " \n" +
                 "Total Amount: 936.0 TL\n" +
-                "Delivery Cost: 18.990000000000002 TL",outContent.toString());
+                "Delivery Cost: 18.990000000000002 TL",outContent.toString().replace("\r",""));
     }
 
     @Test
@@ -671,7 +672,7 @@ public class ShoppingCartAppTest {
                 "Coupon Discount : 701.5 TL\n" +
                 " \n" +
                 "Total Amount: 6313.5 TL\n" +
-                "Delivery Cost: 36.99 TL",outContent.toString());
+                "Delivery Cost: 36.99 TL",outContent.toString().replace("\r",""));
     }
 
 }

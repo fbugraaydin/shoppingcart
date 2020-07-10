@@ -179,7 +179,7 @@ public class ShoppingCart implements Cart {
      */
     private List<Campaign> getCampaignListByCategory(Category category) {
         return campaignList.stream().filter(campaign ->
-                campaign.getCategory() == category || category.isSubCategoryOf(campaign.getCategory()))
+                campaign.getCategory().equals(category) || category.isSubCategoryOf(campaign.getCategory()))
                 .collect(Collectors.toList());
     }
 
@@ -191,7 +191,7 @@ public class ShoppingCart implements Cart {
      */
     private Map<Product, Integer> getProductListBelongsToCategory(Category category) {
         return itemList.entrySet().stream().filter(product ->
-                product.getKey().getCategory() == category ||
+                product.getKey().getCategory().equals(category) ||
                         product.getKey().getCategory().isSubCategoryOf(category)).collect(
                 Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
     }
@@ -232,7 +232,7 @@ public class ShoppingCart implements Cart {
      */
     private Map<Product, Integer> getProductListByCategory(Category category) {
         return itemList.entrySet().stream().filter(product ->
-                product.getKey().getCategory() == category).collect(
+                product.getKey().getCategory().equals(category)).collect(
                 Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
     }
 
